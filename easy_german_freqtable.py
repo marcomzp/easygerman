@@ -10,7 +10,6 @@ import pandas as pd # to make data frames
 
 
 
-
 cwd = os.getcwd() #getting current directory 
 files = glob.glob(cwd + '/*html') #getting all file names 
 
@@ -29,8 +28,9 @@ for file in files:
 	cleaned = cleaned.replace('Manuel', '')
 	cleaned = cleaned.replace('Janusz', '')
 	cleaned = cleaned.replace('Isi', '')
-	words = word_tokenize(cleaned) #tokenezing cleaned corpus 
-	FreqDistacc.update(words) #adding them to the freqDist object. 
+	words = word_tokenize(cleaned) #tokenezing cleaned corpus
+	lowerCase = [each_string.lower() for each_string in words]
+	FreqDistacc.update(lowerCase) #adding them to the freqDist object. 
 	#result.append(fd)
 
 sortedCounts = sorted(FreqDistacc.items() , key = lambda x: x[1] ,
